@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles.css";
 
 export function AgentCard(props) {
+
   const [agentData, setAgentData] = useState(null);
 
   useEffect(() => {
@@ -23,8 +24,15 @@ export function AgentCard(props) {
     <div className="AgentCard">
       {agentData && (
         <>
-          <h2>{agentData["displayName"]}</h2>
-          <img src={agentData["displayIcon"]}></img>
+          {/*<img src={agentData["displayIcon"]} className="AgentIcon"></img>
+          <div className="AgentCardBody">
+            <div className="AbilitiesBar">
+              {
+                agentData["abilities"].map(ability=> <img src={ability.displayIcon} className="AbilitiesIcon"></img>)
+              }
+            </div>
+            </div>*/}
+          <img src={agentData["displayIcon"]} className="AgentIcon"></img>
           <div className="AgentCardBody">
             <div className="AbilitiesBar">
               <img
