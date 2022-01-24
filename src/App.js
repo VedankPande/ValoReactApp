@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { AgentCard } from "./components/AgentCard";
+import {agentMedia} from "./agentMedia";
 
 function App() {
-
   const [agentList, setAgentList] = useState(null);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function App() {
             }
           </div>
           <div className="split right">
-
+            
           </div>
         </>
       )}
