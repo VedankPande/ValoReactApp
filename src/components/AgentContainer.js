@@ -3,40 +3,37 @@ import { useEffect, useState } from "react";
 import { AgentCard } from "./AgentCard";
 
 
-export function AgentContainer(){
+export function AgentContainer(props){
     const [agentList, setAgentList] = useState(null);
 
-    useEffect(() => {
-        axios.get("https://valorant-api.com/v1/agents/").then((res) => {
-        let agentList = []
-        for (const agent of res.data["data"]) {
+    useEffect(()=>{
+      let agentList = []
+        for (const agent of props.data) {
             agentList.push(agent.displayName);
         }
-        console.log(agentList);
         let newAgents = [];
-        for (let i = 0; i < agentList.length; i += 2) {
+        for (let i=0; i<agentList.length; i+=2) {
             newAgents.push(agentList.slice(i, i + 2));
         }
-        console.log(newAgents)
         setAgentList(newAgents)
-        })
-    }, []);
+    },[])
 
     return (
     <div>
-      {agentList && (
+
+      {agentList && props.data && (
         <>
           <div className="split left">
             {
               agentList.map(agentWindow => {
-                if (agentWindow.length % 2 === 0) {
+                if (agentWindow.length%2===0) {
                   return (
                     <div className="row">
                       <div className="column">
-                        <AgentCard agentName={agentWindow[0]} />
+                        <AgentCard agentName={agentWindow[0]} agentData = {props.data}/> 
                       </div>
                       <div className="column">
-                        <AgentCard agentName={agentWindow[1]} />
+                        <AgentCard agentName={agentWindow[1]} agentData = {props.data} />
                       </div>
                     </div>)
                 }
@@ -44,7 +41,7 @@ export function AgentContainer(){
                   return (
                     <div className="row">
                       <div className="column">
-                        <AgentCard agentName={agentWindow[0]} />
+                        <AgentCard agentName={agentWindow[0]} agentData = {props.data}/>
                       </div>
                     </div>)
                 }

@@ -1,14 +1,11 @@
 import "./App.css";
-import {AgentContainer} from "./components/AgentContainer";
+import { MainContainer } from "./components/MainContainer";
 
 function App() {
 
   return (
     <div>
-      <AgentContainer/>
-      <div className="split right">
-
-      </div>
+      <MainContainer/>
     </div>
   );
 }

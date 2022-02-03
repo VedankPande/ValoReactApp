@@ -4,6 +4,8 @@ import "../styles.css";
 
 export function AgentDetail(props){
     
-    useEffect(()=>{},[])
+    useEffect(()=>{
+        
+    },[])
 
 }

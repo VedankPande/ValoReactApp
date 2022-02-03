@@ -7,6 +7,7 @@ export function AgentCard(props) {
   const [agentData, setAgentData] = useState(null);
 
   useEffect(() => {
+    setAgentData(props.agentData)
     axios.get("https://valorant-api.com/v1/agents/").then((res) => {
       var agentRes;
 
@@ -19,19 +20,12 @@ export function AgentCard(props) {
       setAgentData(agentRes);
     });
   }, []);
-
+ ""
   return (
     <div className="AgentCard">
+      {console.log(props.agentData)/*find a way to query agentData in the AgentContainer or just do the same check in AgentCard useEffect*/}
       {agentData && (
         <>
-          {/*<img src={agentData["displayIcon"]} className="AgentIcon"></img>
-          <div className="AgentCardBody">
-            <div className="AbilitiesBar">
-              {
-                agentData["abilities"].map(ability=> <img src={ability.displayIcon} className="AbilitiesIcon"></img>)
-              }
-            </div>
-            </div>*/}
           <img src={agentData["displayIcon"]} className="AgentIcon"></img>
           <div className="AgentCardBody">
             <div className="AbilitiesBar">
