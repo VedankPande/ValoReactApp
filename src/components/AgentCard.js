@@ -7,23 +7,12 @@ export function AgentCard(props) {
   const [agentData, setAgentData] = useState(null);
 
   useEffect(() => {
-    setAgentData(props.agentData)
-    axios.get("https://valorant-api.com/v1/agents/").then((res) => {
-      var agentRes;
-
-      for (const agent of res.data["data"]) {
-        if (agent["displayName"] === props.agentName) {
-          agentRes = agent;
-        }
-      }
-
-      setAgentData(agentRes);
-    });
+    setAgentData(props.data)
   }, []);
- ""
+
+
   return (
-    <div className="AgentCard">
-      {console.log(props.agentData)/*find a way to query agentData in the AgentContainer or just do the same check in AgentCard useEffect*/}
+    <div className="AgentCard" onClick={()=>{props.callback(agentData.displayName)}}>
       {agentData && (
         <>
           <img src={agentData["displayIcon"]} className="AgentIcon"></img>

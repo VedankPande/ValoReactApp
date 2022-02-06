@@ -2,6 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AgentCard } from "./AgentCard";
 
+function filterAgentData(agentName,data){
+      for (const agent of data) {
+        if (agent["displayName"] === agentName) {
+          return agent;
+        }
+      }
+}
+
 
 export function AgentContainer(props){
     const [agentList, setAgentList] = useState(null);
@@ -25,15 +33,15 @@ export function AgentContainer(props){
         <>
           <div className="split left">
             {
-              agentList.map(agentWindow => {
+              agentList.map((agentWindow,index) => {
                 if (agentWindow.length%2===0) {
                   return (
                     <div className="row">
                       <div className="column">
-                        <AgentCard agentName={agentWindow[0]} agentData = {props.data}/> 
+                        <AgentCard key = {index} data = {filterAgentData(agentWindow[0],props.data)} callback={props.callback}/> 
                       </div>
                       <div className="column">
-                        <AgentCard agentName={agentWindow[1]} agentData = {props.data} />
+                        <AgentCard key = {index} data = {filterAgentData(agentWindow[1],props.data)} callback={props.callback}/>
                       </div>
                     </div>)
                 }
@@ -41,7 +49,7 @@ export function AgentContainer(props){
                   return (
                     <div className="row">
                       <div className="column">
-                        <AgentCard agentName={agentWindow[0]} agentData = {props.data}/>
+                        <AgentCard key = {index} data = {filterAgentData(agentWindow[0],props.data)} callback={props.callback}/>
                       </div>
                     </div>)
                 }
