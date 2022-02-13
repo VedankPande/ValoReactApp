@@ -10,9 +10,8 @@ export function AgentCard(props) {
     setAgentData(props.data)
   }, []);
 
-
   return (
-    <div className="AgentCard" onClick={()=>{props.callback(agentData.displayName)}}>
+    <div className="AgentCard" onClick={(event)=>{props.callback(agentData.displayName)}}>
       {agentData && (
         <>
           <img src={agentData["displayIcon"]} className="AgentIcon"></img>

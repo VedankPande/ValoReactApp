@@ -1,26 +1,34 @@
+.mainContainer{
+    background-color: #ece8e1;
+    height: 100%;
+    width: 100%;
+}
+
 .split{
   height: 100%;
-  width: 50%;
-  position: fixed;
-  z-index: 1;
   top: 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  padding-top: 20px;
+  scrollbar-width: none;
 }
 
 .right{
-    right: 0;
-    background-color: #ece8e1;
-    width: 75%;
+    padding: 2%;
+    display: flex;
+    overflow-y: scroll;
+    transition: 1s;
 }
+
 
 .left{
     left: 0;
+    top: 0;
     background-color: #ff4655;
-    width: 25%;
+    width: 0;
+    overflow-x: hidden;
     overflow-y: scroll;
-    padding: 1%;
+    padding: 0;
+    transition: 0.5s;
+    z-index: 1;
+    position: fixed;
 }
 
 .row{
@@ -57,11 +65,12 @@
     height: 50%;
     border-radius: 2px;
     margin-top: 4%;
+    background-color: inherits;
 }
 .AbilitiesIcon{
     width: 20%;
     height: 20%;
-    background-color: #ff4655;
+    background-color: inherit;
     padding: 2%;
     margin: 2%;
     transition: 0.3s;
@@ -72,4 +81,11 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
+}
+
+.agentContainerToggle{
+    background-color: black;
+    color: white;
+    width: 5%;
+    position: fixed;
 }

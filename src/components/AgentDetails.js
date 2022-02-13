@@ -7,5 +7,5 @@ export function AgentDetail(props){
     useEffect(()=>{
         
     },[])
-
+    
 }

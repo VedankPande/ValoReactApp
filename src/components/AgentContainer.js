@@ -10,9 +10,27 @@ function filterAgentData(agentName,data){
       }
 }
 
-
 export function AgentContainer(props){
     const [agentList, setAgentList] = useState(null);
+    const [isHidden, setIsHidden] = useState(true)
+
+    function hideContainer(){
+      document.getElementById("agentContainer").style.width="0";
+      document.getElementById("agentContainer").style.padding="0";
+      document.getElementById("agentContent").style.marginLeft="0"
+      setIsHidden(true)
+    }
+    
+    function showContainer(){
+      document.getElementById("agentContainer").style.width="25%";
+      document.getElementById("agentContainer").style.padding="0.5%";
+      document.getElementById("agentContent").style.marginLeft="25%"
+      setIsHidden(false)
+    }
+
+    function toggleContainer(){
+      isHidden? showContainer() : hideContainer()
+    }
 
     useEffect(()=>{
       let agentList = []
@@ -31,7 +49,8 @@ export function AgentContainer(props){
 
       {agentList && props.data && (
         <>
-          <div className="split left">
+          <div id = "agentContainer" className="split left">
+            <button className="agentContainerToggle" onClick={toggleContainer}>☰</button>
             {
               agentList.map((agentWindow,index) => {
                 if (agentWindow.length%2===0) {
